@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Start the command and capture its PID
-$@ &         # Execute the command passed as argument in the background
+# # Start the command and capture its PID
+$@ &> log &  # Execute the command passed as argument in the background
 PID=$!       # Capture the PID of the command (i.e., the PID of the last background process)
 
 # Loop until the command finishes
@@ -21,4 +21,8 @@ do
 
     # Wait for a second before checking again
     sleep 1      # Pause the script for 1 second before checking again
-done
+done | dialog --begin 7 5  --no-shadow --title "Log" --tailboxbg log 25 130 \
+              --and-widget \
+              --begin 1 5 --no-shadow --title "Progress" --menu 5 130 0 && \
+
+rm log
