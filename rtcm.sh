@@ -23,6 +23,6 @@ do
     sleep 1      # Pause the script for 1 second before checking again
 done | dialog --begin 7 5  --no-shadow --title "Log" --tailboxbg log 25 130 \
               --and-widget \
-              --begin 1 5 --no-shadow --title "Progress" --menu 5 130 0 && \
+              --begin 1 5 --no-shadow --title "Progress" --gauge "" 5 130 0 && \
 
 rm log
